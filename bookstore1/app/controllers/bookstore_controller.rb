@@ -1,0 +1,2 @@
+class BookstoreController < ApplicationController
+end

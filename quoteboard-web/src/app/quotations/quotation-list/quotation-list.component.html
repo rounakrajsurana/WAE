@@ -1,0 +1,20 @@
+<p>
+  quotation-list works!
+</p>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Quote</th>
+    <th></th>
+  </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let quotation of quotations">
+        <td>{{ quotation.id }}</td>
+        <td>{{ quotation.quote }}</td>
+        <td><a routerLink="/quotations/{{ quotation.id }}"><button>View</button></a></td>
+    </tr>
+    </tbody>
+</table>
+          <p><a routerLink="/quotations/new"><button>New Quotation</button></a></p>

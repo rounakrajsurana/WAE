@@ -1,0 +1,52 @@
+<%= form_with(model: request, local: true) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :complain %>
+    <%= form.text_area :complain %>
+  </div>
+
+  <div class="field">
+    <%= form.label :open %>
+    <%= form.check_box :open %>
+  </div>
+
+  <div class="field">
+    <%= form.label :closed %>
+    <%= form.check_box :closed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cancelled %>
+    <%= form.check_box :cancelled %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Date %>
+    <%= form.date_field :Date, :value => Time.now.strftime("%Y-%m-%d") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nature %>
+    <%= form.text_field :nature %>  
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @request.location %>
+</p>
+
+<p>
+  <strong>Complain:</strong>
+  <%= @request.complain %>
+</p>
+
+<p>
+  <strong>Nature:</strong>
+  <%= @request.nature %>
+</p>
+
+<p>
+  <strong>Open:</strong>
+  <%= @request.open %>
+</p>
+
+<p>
+  <strong>Closed:</strong>
+  <%= @request.closed %>
+</p>
+
+<p>
+  <strong>Cancelled:</strong>
+  <%= @request.cancelled %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @request.Date %>
+</p>
+
+
+<% if user_signed_in? && (current_user.admin? || current_user.staff?)%>
+  <%= link_to 'Edit', edit_request_path(@request) %> |
+<% end %>
+
+<%= link_to 'Back', requests_path %>
+<%# <h2> Comment </h2> %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.comment %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+
+
+<h2>Add Comments</h2>
+<%= form_tag(controller: "requests", action: "create_comment") do %>
+<%= text_field_tag 'comment'%>
+<%= hidden_field_tag 'request_id', @request.id %>
+<%= submit_tag 'Comment'%>
+<% end %>

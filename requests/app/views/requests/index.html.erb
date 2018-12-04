@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Complain</th>
+      <th>Nature</th>
+      <th>Open</th>
+      <th>Closed</th>
+      <th>Cancelled</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.location %></td>
+        <td><%= request.complain %></td>
+        <td><%= request.nature %></td>
+        <td><%= request.open %></td>
+        <td><%= request.closed %></td>
+        <td><%= request.cancelled %></td>
+        <td><%= request.Date %></td>
+        <td><%= link_to 'Show', request %></td>
+      
+      <% if user_signed_in? && current_user.admin?  %>
+        <td><%= link_to 'Edit', edit_request_path(request) %></td>
+        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% elsif user_signed_in? && current_user.staff? %>
+        <td><%= link_to 'Edit', edit_request_path(request) %></td>
+      <%end%>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<% if user_signed_in? && (!current_user.admin?  && !current_user.staff?) %>
+  <%= link_to 'New Request', new_request_path %>
+<%end%>

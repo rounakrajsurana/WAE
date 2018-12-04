@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: blah blah  
+  description: writing something is always fun  
+  price: 45
+  category: one
+
+two:
+  name: ur wish 
+  description: this would also be ur wish
+  price: 75
+  category: two
